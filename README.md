@@ -2,7 +2,7 @@
 
 ## Validator
 
-Uses the ajv validator ([@rjsf/validator-ajv8](<[`@rjsf/validator-ajv8`](https://www.npmjs.com/package/@rjsf/validator-ajv8)>)) by default.
+Uses the [ajv validator](https://www.npmjs.com/package/@rjsf/validator-ajv8) by default.
 
 ## Icons
 

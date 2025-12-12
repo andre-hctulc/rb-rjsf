@@ -4,8 +4,8 @@ export const PiDotsThreeVerticalBold: FC<SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="1rem"
-            height="1rem"
+            width="1em"
+            height="1em"
             fill="currentColor"
             viewBox="0 0 256 256"
             {...props}
