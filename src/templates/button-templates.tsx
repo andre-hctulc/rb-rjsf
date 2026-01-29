@@ -14,7 +14,12 @@ export const AddButtonTemplate: FC<IconButtonProps> = (props) => {
     const { rest, iconBtnProps } = iconTemplateProps(props);
 
     return (
-        <IconButton {...iconBtnProps} className={twMerge("mt-4", iconBtnProps.className)} color="neutral">
+        <IconButton
+            ghost
+            {...iconBtnProps}
+            className={twMerge("mt-4", iconBtnProps.className)}
+            color="neutral"
+        >
             <PiPlus />
         </IconButton>
     );
@@ -24,7 +29,7 @@ export const MoveDownButtonTemplate: FC<IconButtonProps> = (props) => {
     const { rest, iconBtnProps } = iconTemplateProps(props);
 
     return (
-        <IconButton {...iconBtnProps} color="neutral">
+        <IconButton  ghost {...iconBtnProps} color="gray">
             <PiCaretDown />
         </IconButton>
     );
@@ -34,7 +39,7 @@ export const MoveUpButtonTemplate: FC<IconButtonProps> = (props) => {
     const { rest, iconBtnProps } = iconTemplateProps(props);
 
     return (
-        <IconButton {...iconBtnProps} color="neutral">
+        <IconButton ghost {...iconBtnProps} color="gray">
             <PiCaretUp />
         </IconButton>
     );
@@ -44,7 +49,7 @@ export const CopyButtonTemplate: FC<IconButtonProps> = (props) => {
     const { rest, iconBtnProps } = iconTemplateProps(props);
 
     return (
-        <IconButton {...iconBtnProps} color="neutral">
+        <IconButton ghost {...iconBtnProps} color="gray">
             <PiCopy />
         </IconButton>
     );
@@ -54,7 +59,7 @@ export const RemoveButtonTemplate: FC<IconButtonProps> = (props) => {
     const { rest, iconBtnProps } = iconTemplateProps(props);
 
     return (
-        <IconButton {...iconBtnProps} className={twMerge(iconBtnProps.className)} color="error">
+        <IconButton ghost {...iconBtnProps} className={twMerge(iconBtnProps.className)} color="red">
             <PiTrash />
         </IconButton>
     );
@@ -69,7 +74,7 @@ export const SubmitButtonTemplate: FC<SubmitButtonProps> = (props) => {
     }
 
     return (
-        <Button {...btnProps} className={"mt-4"} type="submit" color="primary">
+        <Button {...btnProps} className="mt-4" type="submit">
             Submit
         </Button>
     );

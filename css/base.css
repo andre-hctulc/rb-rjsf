@@ -1,0 +1,10 @@
+/* 
+Import pattern in css:
+@import "@dre44/react-base";
+@import "@repo/rb-fs";
+
+Note that @dre44/react-base styles must explicitly be imported first.
+*/
+
+/* Register dist as tailwind source */
+@source "../dist";

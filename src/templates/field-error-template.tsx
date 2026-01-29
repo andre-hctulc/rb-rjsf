@@ -1,16 +1,16 @@
 import { ErrorText, Subtitle } from "@dre44/react-base";
-import type { ErrorListProps } from "@rjsf/utils";
+import type { ErrorListProps, FieldErrorProps } from "@rjsf/utils";
 import type { FC } from "react";
 
-export const ErrorListTemplate: FC<ErrorListProps> = ({
+export const FieldErrorTemplate: FC<FieldErrorProps> = ({
     errorSchema,
     errors,
     registry,
     schema,
-    formContext,
     uiSchema,
+    idSchema,
 }) => {
-    if (!errors.length) {
+    if (!errors?.length) {
         return null;
     }
 
@@ -25,7 +25,7 @@ export const ErrorListTemplate: FC<ErrorListProps> = ({
                 {errors.map((error, i) => {
                     return (
                         <li key={i} className="error">
-                            <ErrorText>{error.stack}</ErrorText>
+                            <ErrorText>{error}</ErrorText>
                         </li>
                     );
                 })}

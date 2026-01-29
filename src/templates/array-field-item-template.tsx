@@ -1,56 +1,83 @@
 import { Toolbar } from "@dre44/react-base";
 import type { ArrayFieldTemplateItemType } from "@rjsf/utils";
+import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 import type { FC } from "react";
+import { ContextBox } from "../base/context-box";
 
-export const ArrayFieldItemTemplate: FC<ArrayFieldTemplateItemType> = ({ registry, ...props }) => {
+export const ArrayFieldItemTemplate: FC<ArrayFieldTemplateItemType> = ({
+    registry,
+    index,
+    className,
+    hasToolbar,
+    hasCopy,
+    hasMoveDown,
+    hasMoveUp,
+    hasRemove,
+    onCopyIndexClick,
+    onReorderClick,
+    onAddIndexClick,
+    onDropIndexClick,
+    canAdd,
+    children,
+    schema,
+    totalItems,
+    disabled,
+    readonly,
+    uiSchema,
+}) => {
     const CopyButton = registry.templates.ButtonTemplates.CopyButton;
     const MoveUpButton = registry.templates.ButtonTemplates.MoveUpButton;
     const MoveDownButton = registry.templates.ButtonTemplates.MoveDownButton;
     const RemoveButton = registry.templates.ButtonTemplates.RemoveButton;
+    const btnProps = { uiSchema: { "ui:size": "xs" } };
 
     return (
-        <div className={props.className}>
-            {props.hasToolbar && (
+        <ContextBox className={twMerge("", className)} uiSchema={uiSchema} formContext={registry.formContext}>
+            {hasToolbar && (
                 <Toolbar justifyContent="end" className="mt-3" gap="xs">
-                    {props.hasCopy && (
+                    {hasCopy && (
                         <CopyButton
                             registry={registry}
                             onClick={() => {
-                                const copy = props.onCopyIndexClick(props.index);
+                                const copy = onCopyIndexClick(index);
                                 copy();
                             }}
+                            {...btnProps}
                         />
                     )}
-                    {props.hasMoveDown && (
+                    {hasMoveDown && (
                         <MoveDownButton
                             registry={registry}
                             onClick={() => {
-                                const moveDown = props.onReorderClick(props.index, props.index + 1);
+                                const moveDown = onReorderClick(index, index + 1);
                                 moveDown();
                             }}
+                            {...btnProps}
                         />
                     )}
-                    {props.hasMoveUp && (
+                    {hasMoveUp && (
                         <MoveUpButton
                             registry={registry}
                             onClick={() => {
-                                const moveUp = props.onReorderClick(props.index, props.index - 1);
+                                const moveUp = onReorderClick(index, index - 1);
                                 moveUp();
                             }}
+                            {...btnProps}
                         />
                     )}
-                    {props.hasRemove && (
+                    {hasRemove && (
                         <RemoveButton
                             registry={registry}
                             onClick={() => {
-                                const remove = props.onDropIndexClick(props.index);
+                                const remove = onDropIndexClick(index);
                                 remove();
                             }}
+                            {...btnProps}
                         />
                     )}
                 </Toolbar>
             )}
-            {props.children}
-        </div>
+            {children}
+        </ContextBox>
     );
 };

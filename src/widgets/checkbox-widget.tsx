@@ -1,9 +1,17 @@
 import type { WidgetProps } from "@rjsf/utils";
 import type { FC } from "react";
 import { inpWidgetProps } from "../form/json-form.util.js";
-import { Checkbox } from "flowbite-react";
+import { Checkbox, Label } from "flowbite-react";
+import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 
 export const CheckboxWidget: FC<WidgetProps> = (props) => {
-    const { rest, inpProps } = inpWidgetProps(props, "");
-    return <Checkbox {...(inpProps as any)} />;
+    const { rest, inpProps } = inpWidgetProps(props);
+    const { label, ...restProps } = inpProps;
+
+    return (
+        <Label className="flex items-center gap-2">
+            <Checkbox {...restProps} className={twMerge("", inpProps.className)} />
+            {label}
+        </Label>
+    );
 };
