@@ -3,9 +3,17 @@ import type { ChangeEvent, FocusEvent } from "react";
 import { useUiSchema } from "./use-ui-schema";
 
 /**
+ * Other props that occur for some widget types.
+ */
+interface Others {
+    errorSchema?: any;
+    autocomplete?: any;
+}
+
+/**
  * @param emptyValue Used for controlled value initialization.
  */
-export function inpWidgetProps(widgetProps: WidgetProps) {
+export function inpWidgetProps(widgetProps: WidgetProps & Others, emptyValue: any) {
     const {
         // field specific ui schema
         // e.g. "some.field": { "ui:size": "sm", ... }
@@ -24,6 +32,8 @@ export function inpWidgetProps(widgetProps: WidgetProps) {
         // 4. Form-level props (readonly, disabled from JSONForm component)
         options,
         schema,
+        autocomplete,
+        errorSchema,
         ...inpProps
     } = widgetProps;
     const id = widgetProps.id;
@@ -40,14 +50,18 @@ export function inpWidgetProps(widgetProps: WidgetProps) {
             rawErrors,
             schema,
             options,
+            errorSchema,
         },
         inpProps: {
+            autoComplete: autocomplete ?? "off",
             ...inpProps,
             value:
                 widgetProps.value ??
                 widgetProps.defaultValue ??
                 fieldSchema["ui:defaultValue"] ??
-                options.emptyValue,
+                // options.emptyValue is undefined in most cases unless explicitly set, so we expect `emptyValue` param explicitly as fallback
+                options.emptyValue ??
+                emptyValue,
             defaultValue: undefined,
             readOnly: options.readonly ?? readonly,
             // flowbite uses "sizing" prop for form element sizes

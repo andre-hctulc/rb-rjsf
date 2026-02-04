@@ -5,11 +5,11 @@ import { Select } from "flowbite-react";
 import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 
 export const SelectWidget: FC<WidgetProps> = (props) => {
-    const { rest, inpProps } = inpWidgetProps(props);
+    const { rest, inpProps } = inpWidgetProps(props, "");
     const { options } = rest;
 
     return (
-        <Select {...inpProps} className={twMerge("", inpProps.className)}>
+        <Select {...inpProps}>
             {options.enumOptions?.map((option: any, index: number) => (
                 <option key={index} value={option.value}>
                     {option.label}

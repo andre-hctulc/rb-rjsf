@@ -5,12 +5,12 @@ import { Checkbox, Label } from "flowbite-react";
 import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 
 export const CheckboxWidget: FC<WidgetProps> = (props) => {
-    const { rest, inpProps } = inpWidgetProps(props);
+    const { rest, inpProps } = inpWidgetProps(props, false);
     const { label, ...restProps } = inpProps;
 
     return (
         <Label className="flex items-center gap-2">
-            <Checkbox {...restProps} className={twMerge("", inpProps.className)} />
+            <Checkbox {...restProps} />
             {label}
         </Label>
     );

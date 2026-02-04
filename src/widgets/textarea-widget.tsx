@@ -5,6 +5,6 @@ import { Textarea } from "flowbite-react";
 import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 
 export const TextareaWidget: FC<WidgetProps> = (props) => {
-    const { rest, inpProps } = inpWidgetProps(props);
-    return <Textarea {...(inpProps as any)} className={twMerge("", inpProps.className)} />;
+    const { rest, inpProps } = inpWidgetProps(props, "");
+    return <Textarea {...(inpProps as any)} />;
 };

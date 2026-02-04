@@ -2,7 +2,14 @@ import { mergeObjects, type UiSchema } from "@rjsf/utils";
 import { useMemo } from "react";
 
 interface UseUiSchemaResult {
+    /**
+     * The merged UI schema combining the root ui schema the field-specific UI schema.
+     * Use it for global ui attributes like sizing, theme, etc.
+     */
     mergedUiSchema: UiSchema;
+    /**
+     * The field-specific UI schema.
+     */
     fieldSchema: UiSchema;
 }
 
